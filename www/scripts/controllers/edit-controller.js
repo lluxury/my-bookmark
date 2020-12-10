@@ -105,7 +105,7 @@ app.controller('editCtr', ['$scope', '$state', '$timeout', '$document', 'ngDialo
   }
 
   $scope.showAddTag = function () {
-    if ($scope.tags.length < 50) {
+    if ($scope.tags.length < 150) {
       console.log('showAddTag..........')
       $scope.newTag = "";
       dialog = ngDialog.open({
@@ -120,7 +120,7 @@ app.controller('editCtr', ['$scope', '$state', '$timeout', '$document', 'ngDialo
 
   $scope.addTag = async function (tag) {
     console.log(tag);
-    if ($scope.tags.length >= 50) {
+    if ($scope.tags.length >= 150) {
       toastr.error('标签个数总数不能超过50个！不允许再添加新分类，如有需求，请联系管理员。', "提示");
       return;
     }

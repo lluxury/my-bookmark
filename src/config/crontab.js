@@ -1,7 +1,7 @@
 const request = require("request");
 
 module.exports = [{
-  interval: 1000 * 60 * 10, // 10分钟抓取一次
+  interval: 1000 * 60 * 60 * 24, // 10分钟抓取一次
   immediate: true,
   handle: async () => {
     let form = {

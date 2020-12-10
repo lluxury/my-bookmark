@@ -9,8 +9,8 @@ app.controller('tagsCtr', ['$scope', '$filter', '$state', '$window', '$statePara
   (async () => {
     await getTags();
     $scope.user = await get('user');
-    if ($scope.user.username != 'lcq') {
-      $(".globalTag").show(); // 自己知道这个功能，不显示
+    if ($scope.user.username != 'yann') {
+      $(".globalTag").show(); // 自己知道这个功能，不显示 lcq
     }
   })()
 
@@ -258,7 +258,7 @@ app.controller('tagsCtr', ['$scope', '$filter', '$state', '$window', '$statePara
   }
 
   $scope.showAddTag = function () {
-    if ($scope.tags.length < 50) {
+    if ($scope.tags.length < 150) {
       console.log('showAddTag..........')
       $scope.newTag = "";
       dialog = ngDialog.open({
@@ -273,7 +273,7 @@ app.controller('tagsCtr', ['$scope', '$filter', '$state', '$window', '$statePara
 
   $scope.addTag = async function (tag) {
     console.log(tag);
-    if ($scope.tags.length >= 50) {
+    if ($scope.tags.length >= 150) {
       toastr.error('标签个数总数不能超过30个！不允许再添加新分类，如有需求，请联系管理员。', "提示");
       return;
     }

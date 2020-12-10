@@ -322,7 +322,7 @@ module.exports = class extends Base {
     if (range == "self") {
       condition.userId = this.ctx.state.user.id;
     } else if (range == "hot") {
-      tableName = "hot_bookmarks";
+      tableName = "bookmarks"; // hot_bookmarks
     } else if (range == "other") {
       condition.userId = ['!=', this.ctx.state.user.id];
     }
@@ -541,7 +541,7 @@ module.exports = class extends Base {
     try {
       // 如果是第0页而且是个人定制的，把 最近点击 与 最近新增 的返回去。
       let data = {};
-      data = await this.model('hot_bookmarks').order('id DESC').page(page || 1, pageSize).countSelect();
+      data = await this.model('bookmarks').order('id DESC').page(page || 1, pageSize).countSelect(); // hot_bookmarks
       for (let bookmark of data.data) {
         if (!bookmark.tagName) {
           bookmark.tagName = "未知";
@@ -556,8 +556,8 @@ module.exports = class extends Base {
   // 随机获取收趣的热门书签
   async hotBookmarksRandomAction() {
     try {
-      let sql = `SELECT * FROM hot_bookmarks ORDER BY RAND() LIMIT 50;`;
-      let data = await this.model('hot_bookmarks').query(sql);
+      let sql = `SELECT * FROM bookmarks ORDER BY RAND() LIMIT 50;`; // hot_bookmarks
+      let data = await this.model('bookmarks').query(sql);  // hot_bookmarks
       for (let bookmark of data) {
         if (!bookmark.tagName) {
           bookmark.tagName = "未知";
